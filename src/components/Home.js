@@ -6,9 +6,11 @@ import SearchBar from "./SearchBar";
 const Home = ({ users, setUsers }) => {
   const defaultState = {
     cSelected: "",
-    Email: "",
-    Username: "",
-    Password: "",
+    user_first_name: "",
+    user_last_name: "",
+    user_email: "",
+    username: "",
+    password: "",
     Location: "",
   };
   const [formState, setFormState] = useState({ ...defaultState });
@@ -17,14 +19,18 @@ const Home = ({ users, setUsers }) => {
     e.preventDefault();
     const user = {
       cSelected: formState.cSelected,
-      Email: formState.Email,
-      Username: formState.Username,
-      Password: formState.Password,
+      user_first_name: formState.user_first_name,
+      user_last_name: formState.user_last_name,
+      user_email: formState.user_email,
+      username: formState.username,
+      password: formState.password,
       Location: formState.Location,
     };
-    formState.Email === "" ||
-    formState.Username === "" ||
-    formState.Password === "" ||
+    formState.user_first_name === "" ||
+    formState.user_last_name === "" ||
+    formState.user_email === "" ||
+    formState.username === "" ||
+    formState.password === "" ||
     formState.Location === ""
       ? alert("You cannot submit an empty form!")
       : newUser(user);
@@ -87,33 +93,55 @@ const Home = ({ users, setUsers }) => {
           </Button>
         </ButtonGroup>
         <FormGroup>
-          <Label for="Email">Email</Label>
+          <Label for="user_first_name" className="mr-sm-2">
+            First Name
+          </Label>
           <Input
-            type="email"
-            name="Email"
-            id="Email"
+            type="text"
+            name="user_first_name"
+            id="user_first_name"
+            value={formState.user_first_name}
             onChange={handleChange}
-            value={formState.Email}
+          />
+          <Label for="user_last_name" className="mr-sm-2">
+            Last Name
+          </Label>
+          <Input
+            type="text"
+            name="user_last_name"
+            id="user_last_name"
+            value={formState.user_last_name}
+            onChange={handleChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="Username">Username</Label>
+          <Label for="user_user_email">Email</Label>
+          <Input
+            type="user_email"
+            name="user_email"
+            id="user_email"
+            onChange={handleChange}
+            value={formState.user_email}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="username">Username</Label>
           <Input
             type="username"
-            name="Username"
-            id="Username"
-            value={formState.Username}
+            name="username"
+            id="username"
+            value={formState.username}
             minLength="2"
             onChange={handleChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="Password">Password</Label>
+          <Label for="password">Password</Label>
           <Input
             type="password"
-            name="Password"
-            id="Password"
-            value={formState.Password}
+            name="password"
+            id="password"
+            value={formState.password}
             minLength="5"
             onChange={handleChange}
           />
